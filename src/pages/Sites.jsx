@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useDebounce } from 'use-debounce'
 import { useForm } from 'react-hook-form'
 import { useSearchParams, useNavigate } from 'react-router-dom'
-import { Plus, Search, Upload, RefreshCw, CheckCircle, XCircle, AlertCircle, X, Pencil } from 'lucide-react'
+import { Plus, Search, Upload, RefreshCw, CheckCircle, XCircle, X, Pencil } from 'lucide-react'
 import { getSites, createSite, uploadMiseAJourMensuelle } from '../api/sites'
 import { EditSiteModal } from '../components/EditSiteModal'
 import { useSortTable, SortIcon } from '../hooks/useSortTable.jsx'
@@ -437,8 +437,8 @@ function MiseAJourModal({ onClose, onSuccess }) {
               <RapportBox color="text-success" label="Ajoutés / réactivés" items={result.ajoutes} />
               <RapportBox color="text-danger" label="Désactivés" items={result.supprimes} />
               <RapportBox color="text-info" label="Modifiés" items={result.modifies} />
-              <div className="bg-gray-50 rounded-xl p-4">
-                <p className="text-xs text-gray-400 mb-2">Passages</p>
+              <div className="bg-surface-2 rounded-xl p-4">
+                <p className="text-xs text-muted mb-2">Passages</p>
                 <p className="text-sm text-success font-medium">+{result.passages_generes} générés</p>
                 <p className="text-sm text-danger font-medium">−{result.passages_annules} annulés</p>
               </div>

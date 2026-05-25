@@ -29,10 +29,14 @@ export function ChatAssistant() {
   const inputRef   = useRef(null)
   const panelRef   = useRef(null)
 
+  const toggleOpen = () => {
+    if (!open) setHasNew(false)
+    setOpen((v) => !v)
+  }
+
   // Focus input when panel opens
   useEffect(() => {
     if (open) {
-      setHasNew(false)
       setTimeout(() => inputRef.current?.focus(), 150)
     }
   }, [open])
@@ -93,7 +97,7 @@ export function ChatAssistant() {
     <>
       {/* ── Floating button ─────────────────────────────────────────────── */}
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={toggleOpen}
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-transform hover:scale-105 active:scale-95"
         style={{ width: 52, height: 52 }}
         aria-label="Ouvrir l'assistant IA"

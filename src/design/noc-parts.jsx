@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* global React, NocIcon */
 const { useEffect, useRef, useState, useMemo } = React;
 

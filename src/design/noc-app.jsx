@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* global React, ReactDOM, NocIcon */
 /* global NocReveal, NocCount, Sparkline, LiveClock, Kpi, SiteMap, AlertItem, AreaChart, SiteRow */
 /* global TweaksPanel, TweakSection, TweakRadio, useTweaks */

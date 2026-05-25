@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 
 // ── Inline icons to replace NocIcon.Up / NocIcon.Down ────────────────────────
 function IconUp() {
@@ -276,7 +276,7 @@ export function AlertItem({ severity, title, site, region, type, time, icon }) {
 
 // ── Area Chart ────────────────────────────────────────────────────────────────
 export function AreaChart({ series, color = 'var(--cyan)', height = 220, yLabel = '%', yMax, xLabels, colors }) {
-  const uid = useRef(Math.random().toString(36).slice(2, 8)).current
+  const uid = useId().replace(/:/g, '')
   const W = 720
   const H = height
   const padX = 40, padT = 14, padB = 28

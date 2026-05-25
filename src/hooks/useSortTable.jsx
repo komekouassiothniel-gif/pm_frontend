@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState } from 'react'
 import { ArrowUp, ArrowDown, ChevronsUpDown } from 'lucide-react'
 
@@ -23,7 +24,7 @@ export function useSortTable(defaultKey = null, defaultDir = 'asc') {
     return [...items].sort((a, b) => {
       const av = getNestedVal(a, sortKey)
       const bv = getNestedVal(b, sortKey)
-      let cmp = 0
+      let cmp
       if (av == null && bv == null) cmp = 0
       else if (av == null) cmp = 1
       else if (bv == null) cmp = -1

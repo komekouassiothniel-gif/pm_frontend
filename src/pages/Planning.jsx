@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useMemo } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
@@ -27,7 +27,7 @@ export default function Planning() {
     staleTime: 30_000,
   })
 
-  const rows = data?.items ?? []
+  const rows = useMemo(() => data?.items ?? [], [data?.items])
 
   const siteSparklines = useMemo(() => {
     const map = {}
