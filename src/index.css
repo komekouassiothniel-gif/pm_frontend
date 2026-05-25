@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THÈME 1 : Sombre (Dark) — défaut
+   Obsidien + jaune MTN
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  --bg-app:         #090A0F;
+  --bg-surface:     rgba(255, 255, 255, 0.03);
+  --bg-surface-2:   rgba(255, 255, 255, 0.05);
+  --bg-panel:       #0D1117;
+  --border:         rgba(255, 255, 255, 0.06);
+  --border-strong:  rgba(255, 255, 255, 0.10);
+  --text-primary:   #F5F7FB;
+  --text-secondary: #9AA4B2;
+  --text-muted:     #6B7585;
+  --primary:        #FFCC00;
+  --primary-hover:  #E6B800;
+  --primary-light:  rgba(255, 204, 0, 0.12);
+  --accent:         #5EA8FF;
+  --accent-light:   rgba(94, 168, 255, 0.12);
+  --success:        #22C55E;
+  --success-light:  rgba(34, 197, 94, 0.12);
+  --warning:        #F59E0B;
+  --warning-light:  rgba(245, 158, 11, 0.12);
+  --danger:         #EF4444;
+  --danger-light:   rgba(239, 68, 68, 0.12);
+  --sidebar-bg:     #0D1117;
+  --sidebar-text:   #9AA4B2;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --logo-bg:        #FFCC00;
+  --logo-fg:        #090A0F;
+  --avatar-bg:      #FFCC00;
+  --avatar-fg:      #090A0F;
+  --glow:           rgba(255, 204, 0, 0.08);
+  --input-bg:       rgba(255, 255, 255, 0.06);
+  --input-border:   rgba(255, 255, 255, 0.12);
+  --primary-focus:  rgba(255, 204, 0, 0.15);
+  --surface:        rgba(255, 255, 255, 0.06);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THÈME 2 : Blanc (Light)
+   Fond blanc + sidebar navy + jaune MTN
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  --bg-app:         #F8FAFF;
+  --bg-surface:     #FFFFFF;
+  --bg-surface-2:   #F1F5F9;
+  --bg-panel:       #FFFFFF;
+  --border:         #E2E8F0;
+  --border-strong:  #CBD5E1;
+  --text-primary:   #0F172A;
+  --text-secondary: #475569;
+  --text-muted:     #64748B;
+  --primary:        #FFCC00;
+  --primary-hover:  #D4A800;
+  --primary-light:  rgba(255, 204, 0, 0.15);
+  --accent:         #3B82F6;
+  --accent-light:   rgba(59, 130, 246, 0.10);
+  --success:        #16A34A;
+  --success-light:  rgba(22, 163, 74, 0.10);
+  --warning:        #D97706;
+  --warning-light:  rgba(217, 119, 6, 0.10);
+  --danger:         #DC2626;
+  --danger-light:   rgba(220, 38, 38, 0.08);
+  --sidebar-bg:     #1E293B;
+  --sidebar-text:   #CBD5E1;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --logo-bg:        #FFCC00;
+  --logo-fg:        #0F172A;
+  --avatar-bg:      #FFCC00;
+  --avatar-fg:      #0F172A;
+  --glow:           rgba(255, 204, 0, 0.12);
+  --input-bg:       #FFFFFF;
+  --input-border:   #E2E8F0;
+  --primary-focus:  rgba(255, 204, 0, 0.20);
+  --surface:        #FFFFFF;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Tailwind design tokens — mappage vers les variables runtime
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+
+  /* Surfaces */
+  --color-canvas:    var(--bg-app);
+  --color-surface:   var(--bg-surface);
+  --color-surface-2: var(--bg-surface-2);
+  --color-panel:     var(--bg-panel);
+
+  /* Borders */
+  --color-edge:        var(--border);
+  --color-edge-strong: var(--border-strong);
+
+  /* Text */
+  --color-content:   var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted:     var(--text-muted);
+
+  /* Brand */
+  --color-primary:       var(--primary);
+  --color-primary-dark:  var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+
+  /* Accent / Info */
+  --color-accent:       var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-info:         var(--accent);
+  --color-info-light:   var(--accent-light);
+
+  /* Status */
+  --color-success:       var(--success);
+  --color-success-light: var(--success-light);
+  --color-warning:       var(--warning);
+  --color-warning-light: var(--warning-light);
+  --color-danger:        var(--danger);
+  --color-danger-light:  var(--danger-light);
+
+  /* Sidebar */
+  --color-sidebar:           var(--sidebar-bg);
+  --color-sidebar-hover:     rgba(255, 255, 255, 0.05);
+  --color-sidebar-active:    var(--primary-light);
+  --color-sidebar-fg:        var(--sidebar-text);
+  --color-sidebar-active-fg: var(--primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Transition fluide lors du changement de thème
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+html.theme-transitioning,
+html.theme-transitioning * {
+  transition:
+    background-color 300ms ease,
+    border-color     300ms ease,
+    color            300ms ease,
+    box-shadow       300ms ease !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Base
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+::selection {
+  background-color: var(--primary-light);
+  color: var(--text-primary);
+}
+
+button, a, select, input, textarea { transition: all 150ms ease; }
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Focus ring ──────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ── Page transition ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: fadeIn 180ms ease-out; }
+
+/* ── Modal ───────────────────────────────────────────────────────────────── */
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.modal-content {
+  animation: modalIn 180ms ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--primary);
+  color: var(--logo-fg);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 12px var(--glow);
+  color: var(--logo-fg);
+}
+.btn-primary:active { box-shadow: none; }
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-secondary:hover {
+  background: var(--bg-surface-2);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-ghost:hover {
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ── Input base ──────────────────────────────────────────────────────────── */
+.input-base {
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  padding: 9px 13px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  width: 100%;
+  font-family: inherit;
+}
+.input-base::placeholder { color: var(--text-muted); }
+.input-base:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-focus);
+}
+
+/* ── Login animations ─────────────────────────────────────────────────────── */
+@keyframes imageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes loginFormIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes loginBrandIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-7px); }
+  30%       { transform: translateX(7px); }
+  45%       { transform: translateX(-5px); }
+  60%       { transform: translateX(5px); }
+  75%       { transform: translateX(-2px); }
+  90%       { transform: translateX(2px); }
+}
+.login-form-enter  { animation: loginFormIn 300ms ease-out both; }
+.login-brand-enter { animation: loginBrandIn 400ms ease-out both; }
+.login-shake       { animation: shake 500ms ease-out; }
+
+/* ── INPUT TEXT & PLACEHOLDER GLOBAL FIX ──────────────────────────────────── */
+input,
+textarea,
+select,
+[type="text"],
+[type="email"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="search"] {
+  background-color: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--input-border) !important;
+  border-radius: 10px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-focus) !important;
+  outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
+label {
+  color: var(--text-secondary) !important;
+}
+
+/* ── Leaflet map fix ─────────────────────────────────────────────────────── */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  background: var(--bg-app) !important;
+  z-index: 1 !important;
+}
+.leaflet-tile-pane {
+  z-index: 2 !important;
+}
+
+/* color-scheme tells the browser to render native dropdown in dark mode */
+select {
+  color-scheme: light;
+}
+[data-theme="dark"] select {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
